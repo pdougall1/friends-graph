@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: friends-graph_development
   pool: 5
-  username: friends-graph
+  username: # friends-graph
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,7 +48,7 @@ test:
   encoding: unicode
   database: friends-graph_test
   pool: 5
-  username: friends-graph
+  username: # friends-graph
   password:
 
 production:

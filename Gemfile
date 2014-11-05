@@ -2,19 +2,24 @@ source 'https://rubygems.org'
 
 ruby '2.1.3'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 gem 'rails-api'
 gem 'pg'
-gem 'faraday'
-gem 'faraday_middleware'
+gem 'koala', "~> 1.10.0rc"
+# gem 'omniauth-facebook'
+gem 'pry'
+gem 'devise'
+gem 'rack-cors'
+gem 'hashie'
 
 group :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 	gem 'vcr'
 end
-
 
 
 
@@ -26,9 +31,3 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
