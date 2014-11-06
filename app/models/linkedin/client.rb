@@ -42,7 +42,6 @@ class Linkedin::Client
 	def connection
 		@connection = faraday.new(:url => @domain) do |config|
 		  config.request  :url_encoded             # form-encode POST params
-		  config.response :logger                  # log requests to STDOUT
 		  config.response :xml,  content_type: /\bxml$/
 		  config.response :json, content_type: /\bjson$/
 		  config.adapter faraday.default_adapter
