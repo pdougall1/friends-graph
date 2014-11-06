@@ -14,6 +14,8 @@ class SessionCreator
 
 	def create
 		access_token = linkedin.exchange_token(code)
+		map = session_mapper.new(access_token)
+		session = session_factory.create(map.to_hash)
 	end
 
 	private
