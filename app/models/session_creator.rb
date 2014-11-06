@@ -1,5 +1,7 @@
 class SessionCreator
 
+	include Linkedin
+
 	def initialize(code, session_mapper: Maps::Session, session_factory: Session)
 		@code = code
 		@session_mapper = session_mapper
@@ -11,6 +13,7 @@ class SessionCreator
 	end
 
 	def create
+		access_token = linkedin.exchange_token(code)
 	end
 
 	private
