@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+	has_many :sessions
+
 # Distance Values are:
 
 # 0: the member
