@@ -12,6 +12,10 @@ gem 'rails-api'
 gem 'pg'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'multi_xml'
+gem 'thin'
+gem 'hashie'
+gem 'pry'
 
 group :test, :development do
   gem 'factory_girl_rails'
