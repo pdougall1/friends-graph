@@ -2,12 +2,17 @@ source 'https://rubygems.org'
 
 ruby '2.1.3'
 
+# dotenv has a load order dependancy :(
+# it must be at the top
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 gem 'rails-api'
 gem 'pg'
 gem 'faraday'
 gem 'faraday_middleware'
+
 
 group :test do
 	gem 'rspec-rails'
