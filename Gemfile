@@ -13,11 +13,18 @@ gem 'pg'
 gem 'faraday'
 gem 'faraday_middleware'
 
+group :test, :development do
+  gem 'factory_girl_rails'
+end
+
 
 group :test do
-	gem 'rspec-rails'
-	gem 'factory_girl_rails'
-	gem 'vcr'
+  gem 'vcr'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'database_cleaner'
+  gem 'webmock'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 
