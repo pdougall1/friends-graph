@@ -12,6 +12,11 @@ describe 'sessions' do
     it "adds a session" do
       expect{ get 'sessions/linkedin' }.to change { Session.count }.by 1
     end
+
+    it "adds a user" do
+    	expect{ get 'sessions/linkedin' }.to change { User.count }.by 1
+    end
+
   end
 
 end
