@@ -12,8 +12,8 @@ class Linkedin::Client
 		instance.exchange_token(code)
 	end
 
-	def self.find(query_type, access_token)
-		instance.find(query_type, access_token)
+	def self.find(query_type, access_token, fields: fields)
+		instance.find(query_type, access_token, fields: fields)
 	end
 
 	def exchange_token(code)
@@ -29,10 +29,10 @@ class Linkedin::Client
 		response.body
 	end
 
-	def find(query_type, access_token)
+	def find(query_type, access_token, fields: fields)
 		@domain = 'https://api.linkedin.com'
 		response = connection.get do |req|
-		  req.url send(query_type.to_sym)
+		  req.url send(query_type.to_sym, fields)
 		  req.headers['x-li-format'] = "json"
 		  req.headers['Authorization'] = "Bearer #{access_token}"
 		end
@@ -48,6 +48,10 @@ class Linkedin::Client
 		end 	
 	end
 
+	def add_fields(url, fields)
+		"#{url}:(#{fields.join(',')})"
+	end
+
 	def access_token_exchange_url
 		'/uas/oauth2/accessToken'
 	end
@@ -56,8 +60,8 @@ class Linkedin::Client
 		'/v1/people'
 	end
 
-	def me
-		"#{person_url}/~"
+	def me(fields)
+		add_fields("#{person_url}/~", fields)
 	end
 
 end
