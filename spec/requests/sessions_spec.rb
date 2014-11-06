@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'sessions' do
 
-  describe "GET sessions/:provider" do
+  describe "GET sessions/:provider", :vcr do
 
     it "is successful" do
       get 'sessions/linkedins'

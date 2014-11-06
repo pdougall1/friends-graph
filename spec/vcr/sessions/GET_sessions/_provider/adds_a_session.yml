@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.linkedin.com/uas/oauth2/accessToken?client_id=77g0bc95ranwgc&client_secret=HlaANe9JNB0lIdBQ&code=&grant_type=authorization_code&redirect_uri=https://localhost:5000/sessions/linkedin
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      P3p:
+      - CP="CAO CUR ADM DEV PSA PSD OUR"
+      Vary:
+      - Accept-Encoding
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Language:
+      - en-US
+      Content-Length:
+      - '122'
+      Date:
+      - Thu, 06 Nov 2014 22:08:43 GMT
+      X-Fs-Uuid:
+      - e890add28332a413b09319cf282b0000
+      X-Li-Fabric:
+      - prod-lva1
+      Strict-Transport-Security:
+      - max-age=0
+      Set-Cookie:
+      - _lipt=deleteMe; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/
+      - bcookie="v=2&681f77af-bff5-4dea-8814-46805b2fc115"; domain=.linkedin.com;
+        Path=/; Expires=Sun, 06-Nov-2016 09:46:16 GMT
+      - bscookie="v=1&20141106220844809f3e31-6440-48f9-8c4e-ae1b3def65d6AQE_PxAhD0rSOoE2-jOS4nvbv876FMl5";
+        domain=.www.linkedin.com; Path=/; Secure; Expires=Sun, 06-Nov-2016 09:46:16
+        GMT; HttpOnly
+      - lang="v=2&lang=en-us"; Version=1; Domain=linkedin.com; Path=/
+      - leo_auth_token="GST:ZL8jjpK84-vZmLaarm87qpzlNtHorkiXr8QeqWzQ0wvEClaDfekmu_:1415311724:4e4e4715be9c7f07b31dcb21b68a076b89d5bb9b";
+        Version=1; Max-Age=1799; Expires=Thu, 06-Nov-2014 22:38:43 GMT; Path=/
+      - s_leo_auth_token="delete me"; Version=1; Max-Age=0; Expires=Thu, 01-Jan-1970
+        00:00:10 GMT; Path=/
+      - sl="delete me"; Version=1; Domain=.www.linkedin.com; Max-Age=0; Expires=Thu,
+        01-Jan-1970 00:00:10 GMT; Path=/
+      - sl="delete me"; Version=1; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT;
+        Path=/
+      - visit="v=1&G"; Version=1; Max-Age=63072000; Expires=Sat, 05-Nov-2016 22:08:44
+        GMT; Path=/
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control:
+      - no-cache, no-store
+      Connection:
+      - keep-alive
+      X-Li-Pop:
+      - prod-lva1
+      X-Li-Uuid:
+      - 6JCt0oMypBOwkxnPKCsAAA==
+    body:
+      encoding: UTF-8
+      string: '{"error_description":"missing required parameters, includes an invalid
+        parameter value, parameter more than once. : code","error":"invalid_request"}'
+    http_version: 
+  recorded_at: Thu, 06 Nov 2014 22:08:44 GMT
+- request:
+    method: get
+    uri: https://api.linkedin.com/v1/people/~
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      X-Li-Format:
+      - json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Li-Request-Id:
+      - UOM6JKHHGJ
+      Date:
+      - Thu, 06 Nov 2014 22:08:43 GMT
+      Vary:
+      - "*"
+      X-Li-Format:
+      - json
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Li-Fabric:
+      - prod-lva1
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Li-Pop:
+      - prod-lva1
+      X-Li-Uuid:
+      - iYQc3YMypBNQ3IMMeysAAA==
+      Set-Cookie:
+      - lidc="b=VB73:g=124:u=1:i=1415311724:t=1415398124:s=3178689709"; Expires=Fri,
+        07 Nov 2014 22:08:44 GMT; domain=.linkedin.com; Path=/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode": 0,
+          "message": "Empty oauth2_access_token",
+          "requestId": "UOM6JKHHGJ",
+          "status": 401,
+          "timestamp": 1415311724837
+        }
+    http_version: 
+  recorded_at: Thu, 06 Nov 2014 22:08:44 GMT
+recorded_with: VCR 2.9.3
