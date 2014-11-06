@@ -15,7 +15,8 @@ class UserCreator
 	def create
 		user_data = linkedin.find('me', session.access_token, fields: fields)
 		map = users_mapper.new(user_data)
-		user = user_factory.create(map.to_hash.except(:connections))
+		user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
+		user.update_attributes(map.to_hash.except(:connections))
 		session.update_attributes(user: user)
 		# TODO: add connections
 	end
