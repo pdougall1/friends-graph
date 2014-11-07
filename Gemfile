@@ -7,7 +7,7 @@ ruby '2.1.3'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.5'
 gem 'rails-api'
 gem 'pg'
 gem 'faraday'
