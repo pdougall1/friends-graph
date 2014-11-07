@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
 	has_many :sessions
+  has_many :connections
+  has_many :connected_users, through: :connections
+
 
 # Distance Values are:
 
