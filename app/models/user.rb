@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   has_many :connections
   has_many :connected_users, through: :connections
 
+  def serealize
+  	user = attributes
+  	user[:connected_users_ids] = connected_users.pluck(:id)
+  	{ user: user, connected_users: connected_users }.to_json
+  end
+
 
 # Distance Values are:
 
