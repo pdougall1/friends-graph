@@ -18,7 +18,8 @@ class UserCreator
 		user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
 		user.update_attributes(map.to_hash.except(:connections))
 		session.update_attributes(user: user)
-		persist_connections(map)
+		persist_connections(user, map)
+		user
 	end
 
 	private
@@ -32,11 +33,12 @@ class UserCreator
 		 'connections', 'picture-url']
 	end
 
-	def persist_connections(map)
+	def persist_connections(user, map)
 		map.connections.each do |conn|
 			map = users_mapper.new(conn)
-			user_factory.where(linkedin_id: map.linkedin_id).tap do |user|
-				user.first_or_create.update_attributes(map.to_hash)
+			new_user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
+			unless user.connected_users.include? new_user
+				user.connections.create(connected_user_id: new_user.id)
 			end
 		end
 	end
