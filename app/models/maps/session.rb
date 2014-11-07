@@ -1,18 +1,7 @@
-class Maps::Session < Hashie::Trash
+class Maps::Session < Hashie::Map
 
 	property :access_token
 	property :expiration, from: :expires_in, with: -> (expires_in) { expiration_date(expires_in) }
-
-	def initialize(params={})
-		super(params.with_indifferent_access.slice(*(self.class.permitted_input_keys)).symbolize_keys)
-	end
-
-	def to_hash
-		each_key.reduce({}) do |acc, key|
-			acc[key] = self.send(key)
-			acc
-		end
-	end
 
 	private
 
