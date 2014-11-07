@@ -7,7 +7,7 @@ class Maps::User < Hashie::Trash
 	property :headline
 	property :industry
 	property :distance
-	property :connections
+	property :connections, transform_with: -> (c) { c['values'] }
 	property :num_connections, from: :numConnections
 	property :linkedin_profile_url, from: :publicProfileUrl
 	property :picture_url, from: :pictureUrl
