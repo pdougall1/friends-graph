@@ -16,6 +16,7 @@ gem 'multi_xml'
 gem 'thin'
 gem 'hashie'
 gem 'pry'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :test, :development do
   gem 'factory_girl_rails'
