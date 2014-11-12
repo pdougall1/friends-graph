@@ -13,7 +13,8 @@ class UserCreator
 	end
 
 	def create
-		user_data = linkedin.find('me', session.access_token, fields: fields)
+		query_params = { query_type: 'me' }
+		user_data = linkedin.find(query_params, session.access_token, fields: fields)
 		map = users_mapper.new(user_data)
 		user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
 		user.update_attributes(map.to_hash.except(:connections))
@@ -30,17 +31,24 @@ class UserCreator
 		['email-address', 'id', 'first-name', 'last-name', 
 		 'headline', 'industry', 'distance', 
 		 'num-connections', 'public-profile-url', 
-		 'connections', 'picture-url']
+		 'connections', 'picture-url', 'picture-urls::(original)']
 	end
 
 	def persist_connections(user, map)
 		map.connections.each do |conn|
-			map = users_mapper.new(conn)
+			full_conn = conn #.merge(profile(conn))
+			map = users_mapper.new(full_conn)
 			new_user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
+			new_user.update_attributes(map.to_hash)
 			unless user.connected_users.include? new_user
 				user.connections.create(connected_user_id: new_user.id)
 			end
 		end
+	end
+
+	def profile(user)
+		query_params = { query_type: 'people', linkedin_id: user['id'] }
+		linkedin.find(query_params, session.access_token, fields: fields)
 	end
 
 end
