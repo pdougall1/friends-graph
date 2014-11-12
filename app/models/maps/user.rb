@@ -11,6 +11,7 @@ class Maps::User < Hashie::Trash
 	property :num_connections, from: :numConnections
 	property :linkedin_profile_url, from: :publicProfileUrl
 	property :picture_url, from: :pictureUrl
+	property :large_picture_url, from: :pictureUrls, with: -> (p) { get_large_image(p) }
 	
 	def initialize(params={})
 		super(params.with_indifferent_access.slice(*(self.class.permitted_input_keys)).symbolize_keys)
@@ -23,5 +24,12 @@ class Maps::User < Hashie::Trash
 		end
 	end
 
+	private
+
+	def self.get_large_image(image_hash)
+		if values = image_hash['values']
+			values.first
+		end
+	end
 
 end
