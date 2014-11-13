@@ -1,8 +1,11 @@
 class UsersController < ActionController::API
 
 	def show
-		user = User.find(params[:id])
-		render json: user.serealize
+		if user = User.find(params[:id])
+			render json: user.serealize
+		else
+			head :ok
+		end
 	end
 
 end
