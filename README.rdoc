@@ -3,4 +3,8 @@
 ### Set these environment variables
 
 The domain of the ember app that is serving this content
-`DOUGALL_EMBER_DOMAIN`
+`DOUGALL_EMBER_DOMAIN=<domain ember app is hoseted on>`
+'DOMAIN=<domain of self>'
+
+`LINKEDIN_API_KEY=`
+`LINKEDIN_SECRET_KEY=`
