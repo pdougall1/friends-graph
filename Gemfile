@@ -17,6 +17,7 @@ gem 'thin'
 gem 'hashie'
 gem 'pry'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rails_12factor'
 
 group :test, :development do
   gem 'factory_girl_rails'
