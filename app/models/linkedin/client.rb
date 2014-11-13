@@ -22,7 +22,7 @@ class Linkedin::Client
 		  req.url access_token_exchange_url
 		  req.params['grant_type'] = 'authorization_code'
 		  req.params['code'] = code
-		  req.params['redirect_uri'] = "#{ENV[DOMAIN]}/sessions/linkedin"
+		  req.params['redirect_uri'] = "#{ENV['DOMAIN']}/sessions/linkedin"
 		  req.params['client_id'] = ENV['LINKEDIN_API_KEY']
 		  req.params['client_secret'] = ENV['LINKEDIN_SECRET_KEY']
 		end
