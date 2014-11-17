@@ -1,6 +1,7 @@
 FriendsGraph::Application.routes.draw do
 
   get 'sessions/:provider', to: 'sessions#create'
+  get 'ping', to: 'pings#index'
 
   resources :users
 
