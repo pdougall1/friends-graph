@@ -8,3 +8,20 @@ The domain of the ember app that is serving this content
 
 `LINKEDIN_API_KEY=`
 `LINKEDIN_SECRET_KEY=`
+
+for sidekiq to work on heroku
+`heroku config:set REDIS_PROVIDER=REDISTOGO_URL`
+this link should show how to configure things for heroku
+https://devcenter.heroku.com/articles/procfile
+
+
+### to get things going
+install redis with homebrew
+`brew install redis`
+
+have to also start a redis instance
+`redis-server`
+
+now gonna have to start the sidekiq server
+`bundle exec sidekiq`
+
