@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
   	{ user: user, connected_users: c_users }.to_json
   end
 
+  def active_session
+    sessions.last
+  end
+
+  def access_token
+    active_session ? active_session.access_token : nil
+  end
 
 # Distance Values are:
 
