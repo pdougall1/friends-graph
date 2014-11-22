@@ -1,7 +1,7 @@
 module Linkedin
 
 	def linkedin
-		Client
+		Linkedin::Delegator
 	end
 
 end

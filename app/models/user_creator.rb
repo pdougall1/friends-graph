@@ -14,7 +14,7 @@ class UserCreator
 
 	def create
 		query_params = { query_type: 'me' }
-		user_data = linkedin.find(query_params, session.access_token, fields: fields)
+		user_data = linkedin.client.find(query_params, session.access_token, fields: fields)
 		map = users_mapper.new(user_data)
 		user = user_factory.where(linkedin_id: map.linkedin_id).first_or_create
 		user.update_attributes(map.to_hash.except(:connections))
@@ -26,13 +26,6 @@ class UserCreator
 	private
 
 	attr_reader :session, :users_mapper, :user_factory
-
-	def fields
-		['email-address', 'id', 'first-name', 'last-name', 
-		 'headline', 'industry', 'distance', 
-		 'num-connections', 'public-profile-url', 
-		 'connections', 'picture-url', 'picture-urls::(original)']
-	end
 
 	def persist_connections(user, map)
 		map.connections.each do |conn|
